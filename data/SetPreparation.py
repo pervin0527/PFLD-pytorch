@@ -1,11 +1,14 @@
 #-*- coding: utf-8 -*-
 import os
-import numpy as np
-import cv2
-import shutil
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "..")))
+
+import cv2
+import shutil
+import numpy as np
+
 from pfld.utils import calculate_pitch_yaw_roll
+
 debug = False
 
 def rotate(angle, center, landmark):
@@ -170,6 +173,7 @@ class ImageDate():
 
             labels.append(label)
         return labels
+    
 def get_dataset_list(imgDir, outDir, landmarkDir, is_train):
     with open(landmarkDir,'r') as f:
         lines = f.readlines()
@@ -196,12 +200,13 @@ def get_dataset_list(imgDir, outDir, landmarkDir, is_train):
             f.writelines(label)
 
 if __name__ == '__main__':
-    root_dir = os.path.dirname(os.path.realpath(__file__))
-    imageDirs = 'WFLW/WFLW_images'
-    Mirror_file = 'WFLW/WFLW_annotations/Mirror98.txt'
+    # root_dir = os.path.dirname(os.path.realpath(__file__))
+    root_dir = '/home/pervinco/Datasets/WFLW'
+    imageDirs = f'{root_dir}/WFLW_images'
+    Mirror_file = f'{root_dir}/WFLW_annotations/Mirror98.txt'
 
-    landmarkDirs = ['WFLW/WFLW_annotations/list_98pt_rect_attr_train_test/list_98pt_rect_attr_test.txt',
-                    'WFLW/WFLW_annotations/list_98pt_rect_attr_train_test/list_98pt_rect_attr_train.txt']
+    landmarkDirs = [f'{root_dir}/WFLW_annotations/list_98pt_rect_attr_train_test/list_98pt_rect_attr_test.txt',
+                    f'{root_dir}/WFLW_annotations/list_98pt_rect_attr_train_test/list_98pt_rect_attr_train.txt']
 
     outDirs = ['test_data', 'train_data']
     for landmarkDir, outDir in zip(landmarkDirs, outDirs):

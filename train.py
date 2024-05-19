@@ -185,14 +185,14 @@ def parse_args():
 
     # -- snapshot、tensorboard log and checkpoint
     parser.add_argument('--snapshot',
-                        default='./checkpoint/snapshot/',
+                        default='/home/pervinco/Models/PFLD/checkpoint/snapshot/',
                         type=str,
                         metavar='PATH')
     parser.add_argument('--log_file',
-                        default="./checkpoint/train.logs",
+                        default="/home/pervinco/Models/PFLD/checkpoint/train.logs",
                         type=str)
     parser.add_argument('--tensorboard',
-                        default="./checkpoint/tensorboard",
+                        default="/home/pervinco/Models/PFLD/checkpoint/tensorboard",
                         type=str)
     parser.add_argument(
         '--resume',
@@ -202,11 +202,11 @@ def parse_args():
 
     # --dataset
     parser.add_argument('--dataroot',
-                        default='./data/train_data/list.txt',
+                        default='/home/pervinco/Datasets/WFLW/train_data/list.txt',
                         type=str,
                         metavar='PATH')
     parser.add_argument('--val_dataroot',
-                        default='./data/test_data/list.txt',
+                        default='/home/pervinco/Datasets/WFLW/test_data/list.txt',
                         type=str,
                         metavar='PATH')
     parser.add_argument('--train_batchsize', default=256, type=int)
